@@ -1,0 +1,16 @@
+{
+ "objects": {
+  "logo": {
+   "animation": 1,
+   "x": 10,
+   "y": 10,
+   "path": "logo",
+   "logic": [
+    1,
+    2
+   ]
+  }
+ },
+ "logic": [
+ ]
+}
