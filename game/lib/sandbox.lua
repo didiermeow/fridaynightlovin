@@ -5,7 +5,11 @@ local safe = {
   tonumber = tonumber,
   pairs = pairs,
   ipairs = ipairs,
-  pcall = pcall
+  pcall = pcall,
+  math = {  },
+  string = {  },
+  table = {  },
+  os = {  }
 }
 safe._G = safe
 
