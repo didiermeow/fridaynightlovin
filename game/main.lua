@@ -12,12 +12,18 @@ function love.load()
   if not game.curMod then game.curMod=false end
 
   local baseImagesPath = love.filesystem.getDirectoryItems( "assets/images" )
-  for i,v in ipairs(baseImagesPath) do
-    local path = "assets/images".."/"..v
-    local info = love.filesystem.getInfo( path )
-    if info then
-      if info.type == "file" then
-      elseif info.type =="directory" then
+
+  local function loadallimg(imgpath,x)
+    local items = love.filesystem.getDirectoryItems( imgpath )
+    for i,v in ipairs(items) do
+      local path = imgpath.."/"..v
+      local info = love.filesystem.getInfo( path )
+      if info then
+        if info.type == "file" then
+          game.images[string.len(imgpath)-(string.len(x) or 0)] = love.graphics.newImage(path)
+        elseif info.type == "directory" then
+          -- do something
+        end
       end
     end
   end
