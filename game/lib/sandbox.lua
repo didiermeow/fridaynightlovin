@@ -8,3 +8,16 @@ local safe = {
   pcall = pcall
 }
 safe._G = safe
+
+return function(path)
+  local chunk, err = loadfile(path)
+  if not chunk then
+    return nil, err
+  end
+  setfenv(chunk, safe)
+  local success, res = pcall(chunk)
+  if not success then
+    return nil, res
+  end
+  return res
+end
