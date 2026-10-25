@@ -1,11 +1,26 @@
+game = {}
+game.images = {}
+
 function love.load()
-  local success = "Assets already embedded, no mounting required."
-  --local success = love.filesystem.mount(love.filesystem.getSourceBaseDirectory(), "", true)
-  print(success)
-  state = require("lib.state") -- Doesn't work yet
-  print("loading libraries")
-  Object = require("lib.classic") -- Class library
-  lovebpm = require("lib.lovebpm") -- BPM library
-  print("libraries loaded")
+  state = require("lib.state")
+
+  Object = require("lib.classic")
+  lovebpm = require("lib.lovebpm")
+
+  game.curMod = love.filesystem.read("loadedMod.txt")
+
+  if not game.curMod then game.curMod=false end
+
+  local baseImagesPath = love.filesystem.getDirectoryItems( "assets/images" )
+  for i,v in ipairs(baseImagesPath) do
+    local path = "assets/images".."/"..v
+    local info = love.filesystem.getInfo( path )
+    if info then
+      if info.type == "file" then
+      elseif info.type =="directory" then
+      end
+    end
+  end
+
   state.switch("splash")
 end
