@@ -1,2 +1,2 @@
 # logic
-all the mods logic is written in blockly
+the mods logic is written in Lua
