@@ -14,7 +14,7 @@ function love.load()
   local baseImagesPath = love.filesystem.getDirectoryItems( "assets/images" )
 
   local function loadallimg(imgpath,fp)
-    fullpath = fp or imgpath
+    local fullpath = fp or imgpath
     local items = love.filesystem.getDirectoryItems( imgpath )
     for i,v in ipairs(items) do
       local path = imgpath.."/"..v
