@@ -13,14 +13,15 @@ function love.load()
 
   local baseImagesPath = love.filesystem.getDirectoryItems( "assets/images" )
 
-  local function loadallimg(imgpath,x)
+  local function loadallimg(imgpath,fp)
+    fullpath = fp or imgpath
     local items = love.filesystem.getDirectoryItems( imgpath )
     for i,v in ipairs(items) do
       local path = imgpath.."/"..v
       local info = love.filesystem.getInfo( path )
       if info then
         if info.type == "file" then
-          game.images[string.len(imgpath)-(string.len(x) or 0)] = love.graphics.newImage(path)
+          game.images[fullpath] = love.graphics.newImage(path)
         elseif info.type == "directory" then
           -- do something
         end
