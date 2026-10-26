@@ -31,7 +31,7 @@ function love.load()
   loadallimg(baseImagesPath, baseImagesPath:len())
 
   if game.curMod then
-    local modImagesPath = "mods/images"
+    local modImagesPath = "mods/"..game.curMod.."/images"
     loadallimg(modImagesPath, modImagesPath:len())
   end
 
