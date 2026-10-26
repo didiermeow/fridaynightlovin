@@ -11,15 +11,16 @@ function love.load()
   game.curMod = love.filesystem.read("loadedMod.txt") or false
 
   local baseImagesPath = "assets/images"
+  local modImagesPath = "mods/images"
 
-  local function loadallimg(imgpath)
+  local function loadallimg(imgpath,cut)
     local items = love.filesystem.getDirectoryItems( imgpath )
     for i,v in ipairs(items) do
       local path = imgpath.."/"..v
       local info = love.filesystem.getInfo( path )
       if info then
         if info.type == "file" then
-          game.images[path] = love.graphics.newImage(path)
+          game.images[path:sub(cut,-1)] = love.graphics.newImage(path)
         elseif info.type == "directory" then
           loadallimg(path)
         end
@@ -28,6 +29,7 @@ function love.load()
   end
 
   loadallimg(baseImagesPath)
+  loadallimg(modImagesPath)
 
   game.state.switch("splash")
 end
