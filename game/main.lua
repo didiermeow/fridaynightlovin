@@ -1,11 +1,12 @@
 game = {}
 game.images = {}
+game.classes = {}
 
 function love.load()
-  state = require("lib.state")
+  game.state = require("lib.state")
 
-  Object = require("lib.classic")
-  lovebpm = require("lib.lovebpm")
+  game.classes.Object = require("lib.classic")
+  game.lovebpm = require("lib.lovebpm")
 
   game.curMod = love.filesystem.read("loadedMod.txt") or false
 
@@ -28,5 +29,5 @@ function love.load()
 
   loadallimg(baseImagesPath)
 
-  state.switch("splash")
+  game.state.switch("splash")
 end
