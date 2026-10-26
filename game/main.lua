@@ -7,27 +7,26 @@ function love.load()
   Object = require("lib.classic")
   lovebpm = require("lib.lovebpm")
 
-  game.curMod = love.filesystem.read("loadedMod.txt")
+  game.curMod = love.filesystem.read("loadedMod.txt") or false
 
-  if not game.curMod then game.curMod=false end
+  local baseImagesPath = "assets/images"
 
-  local baseImagesPath = love.filesystem.getDirectoryItems( "assets/images" )
-
-  local function loadallimg(imgpath,fp)
-    local fullpath = fp or imgpath
+  local function loadallimg(imgpath)
     local items = love.filesystem.getDirectoryItems( imgpath )
     for i,v in ipairs(items) do
       local path = imgpath.."/"..v
       local info = love.filesystem.getInfo( path )
       if info then
         if info.type == "file" then
-          game.images[fullpath] = love.graphics.newImage(path)
+          game.images[path] = love.graphics.newImage(path)
         elseif info.type == "directory" then
-          -- do something
+          loadallimg(path)
         end
       end
     end
   end
+
+  loadallimg(baseImagesPath)
 
   state.switch("splash")
 end
