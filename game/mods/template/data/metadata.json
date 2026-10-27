@@ -3,5 +3,6 @@
  "description": "Mod example.\ntemplate",
  "version": "0.01",
  "modVersion": "1",
- "startScreen": "splash"
+ "startScreen": "splash",
+ "hasSplashText": true
 }

@@ -7,8 +7,10 @@ function love.load()
 
   game.classes.Object = require("lib.classic")
   game.lovebpm = require("lib.lovebpm")
+  game.json = require("lib.json")
 
-  game.curMod = love.filesystem.read("loadedMod.txt") or false
+  game.curMod = love.filesystem.read("save/loadedMod.txt") or false
+  if game.curMod=="" then game.curMod=false end
 
   local baseImagesPath = "assets/images"
 
@@ -33,7 +35,10 @@ function love.load()
   if game.curMod then
     local modImagesPath = "mods/"..game.curMod.."/images"
     loadallimg(modImagesPath, modImagesPath:len())
+    local json = game.json
+    local rawmdata = love.filesystem.read("mods/"..game.curMod.."/data/metadata.json")
+    game.modMetadata = json.decode(rawmdata)
   end
 
-  game.state.switch("splash")
+  game.state.switch("states.splash")
 end
