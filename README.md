@@ -5,5 +5,6 @@ This is Friday Night Funkin' engine but made with LÖVE
 * [Friday Night Funkin'](https://ninja-muffin24.itch.io/funkin)
 ### Libraries
 * [rxi](https://github.com/rxi)
-  * classic
-  * lovebpm
+  * [classic](https://github.com/rxi/classic)
+  * [lovebpm](https://github.com/rxi/lovebpm)
+  * [json](https://github.com/rxi/json)
