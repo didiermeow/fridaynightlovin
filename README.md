@@ -7,4 +7,4 @@ This is Friday Night Funkin' engine but made with LÖVE
 * [rxi](https://github.com/rxi)
   * [classic](https://github.com/rxi/classic)
   * [lovebpm](https://github.com/rxi/lovebpm)
-  * [json](https://github.com/rxi/json)
+  * [json.lua](https://github.com/rxi/json.lua)
